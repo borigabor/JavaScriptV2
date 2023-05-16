@@ -555,3 +555,134 @@ function square (num) { // paraméter
 
 square(5); // Argumentum;
 */
+
+/* BIND CALL APPLY */
+
+/*
+// What is call?
+const person = {
+    name: "Ödön",
+}
+
+function introduce (age) {
+    console.log("Hello a nevem " + this.name + " az életkorom " + age);
+}
+
+introduce.call(person, 18);
+*/
+
+
+// What is apply?
+/*
+const person = {
+    name: "Ödön",
+}
+
+function introduce (age, profession) {
+    console.log("Hello a nevem " + this.name + " az életkorom " + age + " " + profession);
+}
+
+introduce.apply(person, [18, "Softwer Engineer"]);
+*/
+
+// What is blind?
+/*
+const person = {
+    name: "Ödön",
+}
+
+function introduce (age, profession) {
+    console.log("Hello a nevem " + this.name + " az életkorom " + age + " " + profession);
+}
+
+const bindFunc = introduce.bind(person);
+
+console.log(bindFunc(24, "Softwer engineer"));
+console.log(bindFunc(34, "Youteber"));
+
+*/
+
+// Mit fog kiírni?
+/*
+const person = {name: "Henry"};
+
+function sayHi (age) {
+    return `${this.name} is ${age}`;
+}
+
+console.log(sayHi.call(person, 28));
+console.log(sayHi.bind(person, 23));
+*/
+
+
+// call with function inside object
+/*
+const age = 10;
+
+var person = {
+    name: "Ödön",
+    age: 20,
+    getAge: function () {
+        return this.age;
+    }
+}
+
+var person2 = { age: 24};
+
+console.log(person.getAge.call(person2));
+
+*/
+
+// Mit ír ki?
+/*
+var status = ":)";
+
+setTimeout(()=> {
+    const status = ":|";
+
+    const data = {
+        status: ":(",
+        getStatus() {
+            return this.status;
+                }
+    }
+    console.log(data.getStatus());
+console.log(data.getStatus.call(this));
+}, 0);
+*/
+
+/*
+const animals = [
+    {species: "Lion", name: "king"},
+    {species: "Whale", name: "Queen"},
+];
+
+function printAnimals (i) {
+    this.print = function () {
+        console.log("#" + i + " " + this.species + ": " + this.name);
+    };
+    this.print();
+}
+
+for (let i = 0; i < animals.length; i++) {
+    printAnimals.call(animals[i], i);
+}
+*/
+
+// Append an array to another array
+/*
+const array = ['a', 'b'];
+const elements = [0, 1, 2];
+
+array.push.apply(array, elements);
+
+console.log(array);
+
+*/
+
+// Find min/max number in an array
+/*
+const numbers = [5, 6, 2, 3, 7];
+
+console.log(Math.max.apply(null, numbers));
+*/
