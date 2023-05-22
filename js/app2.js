@@ -686,3 +686,87 @@ const numbers = [5, 6, 2, 3, 7];
 
 console.log(Math.max.apply(null, numbers));
 */
+
+
+
+// currying example
+
+/*
+function f(a) {
+    return function (b) {
+        return `${a} ${b}`;
+    }
+}
+
+console.log(f(5)(6));
+
+*/
+
+// Why should we use curriyng?
+
+// question 1 - sum(2)(6)(1)
+/*
+function sum (a) {
+    return function (b) {
+        return function (c) {
+            return a + b + c;
+        }
+    }
+}
+
+console.log(sum(2)(6)(1));
+*/
+
+// question 2 
+/*
+    evaluate("sum")(4)(2) => 6;
+    evaluate("multiply")(4)(2) => 8
+    evaluate("divide")(4)(2) => 2
+    evaluate("substract")(4)(2) => 2
+*/
+
+/*
+function evaluate (operation) {
+
+    return function (a) {
+        return function (b) {
+            if (operation === "sum") { return a + b}
+           else if (operation === "multiply") { return a * b}
+           else if (operation === "divide") { return a / b}
+           else if (operation === "substract") { return a - b}
+           else return "Invalid operation!";
+        }
+    }
+
+}
+
+console.log(evaluate("sum")(4)(2));
+const mul = evaluate("multiply");
+console.log(mul(2)(3));
+*/
+
+// question 3 - Infintite Currying -> sum(1)(2)(3).....(n)
+
+/*
+function add (a) {
+    return function (b) {
+        if (b) return add(a + b) ; // Ha b lézezik;
+        return a;
+    }
+}
+
+console.log(add(5)(2)(4)(8)());
+*/
+
+// question 4 - Manipulating DOM
+/*
+function updateElementText (id) {
+    return function (content) {
+        document.querySelector(`#${id}`).textContent = content;
+    }
+}
+
+const updateHeader = updateElementText("heading");
+
+updateHeader("Hello kis mackó");
+*/
